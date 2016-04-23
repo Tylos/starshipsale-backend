@@ -1,20 +1,109 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
+@import java.util
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
+@import views.html.templates.small_item
+@import views.html.templates.footer
+@import views.html.templates.nav_header
+@(products: util.List[domain.Product])
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Java")
+<!DOCTYPE html>
+<html lang="en">
 
-}
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Startship sale</title>
+
+            <!-- Bootstrap Core CSS -->
+        <link href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")" rel="stylesheet">
+
+            <!-- Custom CSS -->
+        <link href="@routes.Assets.versioned("stylesheets/shop-homepage.css")" rel="stylesheet">
+
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    </head>
+
+    <body>
+
+        @nav_header()
+            <!-- Page Content -->
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-9">
+
+                    <div class="row carousel-holder">
+
+                        <div class="col-md-12">
+
+                            @import java.math.BigInteger; var i=0; var maxItems=3
+
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+
+                                    @for(i <- 1 to maxItems) {
+                                        <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
+                                    }
+
+                                </ol>
+                                <div class="carousel-inner">
+
+                                    <div class="item active">
+                                        <img class="slide-image" src="@products.get(0).image" alt="">
+                                    </div>
+
+                                    @for(i <- 1 to maxItems) {
+                                        <div class="item">
+                                            <img class="slide-image" src="@products.get(i).image" alt="http://placehold.it/800x300">
+                                        </div>
+                                    }
+
+                                </div>
+                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                    @for(p <- products) {
+                        @small_item(p)
+                    }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        @footer()
+
+        <!-- jQuery -->
+        <script href="@routes.Assets.versioned("js/jquery.js")"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script href="@routes.Assets.versioned("js/bootstrap.min.js")"></script>
+
+    </body>
+
+</html>
