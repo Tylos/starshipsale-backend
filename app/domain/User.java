@@ -32,4 +32,12 @@ public class User {
     public void unfavorite(Product product) {
         favorites.remove(product);
     }
+
+    public boolean isFavorite(Product product) {
+        return favorites.contains(product);
+    }
+
+    public Boolean isInCart(Product product) {
+        return shoppingCart.contains(product);
+    }
 }
