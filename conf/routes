@@ -4,10 +4,10 @@
 GET     /api/products                    controllers.ApiProductsController.list
 GET     /api/products/:id                controllers.ApiProductsController.show(id: Long)
 
-GET     /products                    controllers.ProductsController.list
 GET     /products/:id                controllers.ProductsController.show(id: Long)
 POST    /products/:id/favorite       controllers.ProductsController.favoriteProduct(id: Long)
 DELETE  /products/:id/favorite       controllers.ProductsController.unfavoriteProduct(id: Long)
+GET     /                            controllers.ProductsController.list
 #POST /products/:id/purchase       unfavoriteProductteProduct(id: Long)
 
 POST    /users/login                 controllers.UsersController.login
