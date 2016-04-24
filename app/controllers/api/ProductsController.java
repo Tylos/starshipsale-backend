@@ -2,7 +2,8 @@ package controllers.api;
 
 import javax.inject.Inject;
 
-import controllers.ActionAuthenticator;
+import controllers.OptionalAuthenticator;
+import controllers.RequiredAuthenticator;
 import domain.Product;
 import domain.User;
 import play.Logger;
@@ -25,27 +26,28 @@ public class ProductsController extends Controller {
     @Inject
     UserRepository userRepository;
 
+    @Security.Authenticated(OptionalAuthenticator.class)
     public Result list() {
-        // TODO Check the headers here and swipe anon
-        User userContext = UserRepository.anonymous;
-
         return ok(Json.toJson(
-                mapProducts(productsRepository.getAll(), userContext)));
+                mapProducts(
+                        productsRepository.getAll(),
+                        getUserContextWithAnonymousFallback())));
     }
 
+    @Security.Authenticated(OptionalAuthenticator.class)
     public Result show(Long id) {
-        // TODO Check the headers here and swipe anon
-        User userContext = UserRepository.anonymous;
-
         Product product = productsRepository.getById(id);
         if (product != null) {
-            return ok(Json.toJson(mapProduct(product, userContext)));
+            return ok(Json.toJson(
+                    mapProduct(
+                            product,
+                            getUserContextWithAnonymousFallback())));
         } else {
             return notFound();
         }
     }
 
-    @Security.Authenticated(ActionAuthenticator.class)
+    @Security.Authenticated(RequiredAuthenticator.class)
     public Result favoriteProduct(Long id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
@@ -59,7 +61,7 @@ public class ProductsController extends Controller {
         }
     }
 
-    @Security.Authenticated(ActionAuthenticator.class)
+    @Security.Authenticated(RequiredAuthenticator.class)
     public Result unfavoriteProduct(Long id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
@@ -93,5 +95,13 @@ public class ProductsController extends Controller {
                 .withIsFavorite(userContext.isFavorite(product))
                 .withIsInCart(userContext.isInCart(product))
                 .build();
+    }
+
+    private User getUserContextWithAnonymousFallback() {
+        if (!OptionalAuthenticator.ANONYMOUS_USER.equals(ctx().request().username())) {
+            User user = userRepository.getByIdentifier(ctx().request().username());
+            return user != null ? user : UserRepository.anonymous;
+        }
+        return UserRepository.anonymous;
     }
 }

@@ -1,17 +1,16 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
-GET     /api/products                 controllers.api.ProductsController.list
-GET     /api/products/:id             controllers.api.ProductsController.show(id: Long)
-POST    /products/:id/favorite        controllers.api.ProductsController.favoriteProduct(id: Long)
-DELETE  /products/:id/favorite        controllers.api.ProductsController.unfavoriteProduct(id: Long)
+GET     /api/products                     controllers.api.ProductsController.list
+GET     /api/products/:id                 controllers.api.ProductsController.show(id: Long)
+POST    /api/products/:id/favorite        controllers.api.ProductsController.favoriteProduct(id: Long)
+DELETE  /api/products/:id/favorite        controllers.api.ProductsController.unfavoriteProduct(id: Long)
 
-GET     /products                     controllers.ProductsController.list
-GET     /products/:id                 controllers.ProductsController.show(id: Long)
+POST    /api/users/login                  controllers.api.UsersController.login
 
+GET     /products                         controllers.ProductsController.list
+GET     /products/:id                     controllers.ProductsController.show(id: Long)
 
-
-POST    /users/login                  controllers.UsersController.login
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                     controllers.Assets.versioned(path="/public", file: Asset)

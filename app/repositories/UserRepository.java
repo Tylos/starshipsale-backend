@@ -8,5 +8,5 @@ public interface UserRepository {
 
     void add(User user);
 
-    public static User anonymous = new User("", "");
+    User anonymous = new User("", "");
 }
