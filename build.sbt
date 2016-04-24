@@ -1,4 +1,4 @@
-name := "play-java"
+name := "startshipsale"
 
 version := "1.0-SNAPSHOT"
 
