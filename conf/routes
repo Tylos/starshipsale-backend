@@ -9,7 +9,7 @@ DELETE  /products/:id/favorite        controllers.api.ProductsController.unfavor
 GET     /products                     controllers.ProductsController.list
 GET     /products/:id                 controllers.ProductsController.show(id: Long)
 
-#POST /products/:id/purchase       unfavoriteProductteProduct(id: Long)
+
 
 POST    /users/login                  controllers.UsersController.login
 

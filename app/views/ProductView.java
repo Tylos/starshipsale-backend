@@ -2,20 +2,20 @@ package views;
 
 public class ProductView {
 
-    final Long id;
-    final String name;
-    final String model;
-    final String manufacturer;
-    final String starship_class;
-    final String cost_in_credits;
-    final String image;
-    final String passengers;
-    final String crew;
-    final String cargo_capacity;
-    final String hyperdrive_rating;
-    final Boolean is_featured;
-    final Boolean is_favorite;
-    final Boolean is_in_cart;
+    public final Long id;
+    public final String name;
+    public final String model;
+    public final String manufacturer;
+    public final String starship_class;
+    public final String cost_in_credits;
+    public final String image;
+    public final String passengers;
+    public final String crew;
+    public final String cargo_capacity;
+    public final String hyperdrive_rating;
+    public final Boolean is_featured;
+    public final Boolean is_favorite;
+    public final Boolean is_in_cart;
 
     private ProductView(Builder builder) {
         is_in_cart = builder.is_in_cart;
@@ -70,7 +70,7 @@ public class ProductView {
         private String crew;
         private String cargo_capacity;
         private String hyperdrive_rating;
-        private Boolean is_featured;
+        private Boolean is_featured = Boolean.FALSE;
 
         // User context
         private Boolean is_favorite = Boolean.FALSE;
