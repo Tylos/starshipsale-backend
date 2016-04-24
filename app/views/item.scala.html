@@ -1,0 +1,85 @@
+@import domain._
+@import views.html.templates.footer
+@import views.html.templates.nav_header
+@(product: Product)
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>@product.name</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="@routes.Assets.versioned("stylesheets/shop-item.css")" rel="stylesheet">
+
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    </head>
+
+    <body>
+
+        @nav_header()
+
+            <!-- Page Content -->
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-9">
+
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="@product.image" alt="http://placehold.it/800x300">
+                        <div class="caption-full">
+                            <h4 class="pull-right">@product.cost_in_credits</h4>
+                            <h4><a href="#">@product.name</a></h4>
+
+                            <p><strong>Model: </strong>@product.model</p>
+                            <p><strong>Manufacturer: </strong>@product.manufacturer</p>
+                            <p><strong>Max. Passengers: </strong>@product.passengers</p>
+                            <p><strong>Crew members: </strong>@product.crew</p>
+                            <p><strong>Cargo capacity: </strong>@product.cargo_capacity</p>
+                            <p><strong>Hyperdrive rating: </strong>@product.hyperdrive_rating</p>
+
+                        </div>
+                        <div class="ratings">
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                4.0 stars
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        @footer()
+
+            <!-- jQuery -->
+        <script href="@routes.Assets.versioned("js/jquery.js")"></script>
+            <!-- Bootstrap Core JavaScript -->
+        <script href="@routes.Assets.versioned("js/bootstrap.min.js")"></script>
+
+    </body>
+
+</html>
