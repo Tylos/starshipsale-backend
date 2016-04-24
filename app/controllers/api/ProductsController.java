@@ -2,8 +2,8 @@ package controllers.api;
 
 import javax.inject.Inject;
 
-import controllers.OptionalAuthenticator;
-import controllers.RequiredAuthenticator;
+import controllers.authentication.OptionalAuthenticator;
+import controllers.authentication.RequiredAuthenticator;
 import domain.Product;
 import domain.User;
 import play.Logger;

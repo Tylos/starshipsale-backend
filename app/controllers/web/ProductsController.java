@@ -1,4 +1,4 @@
-package controllers;
+package controllers.web;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.authentication;
 
 import com.google.inject.Inject;
 import domain.Session;
