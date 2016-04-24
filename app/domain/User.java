@@ -1,20 +1,22 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User {
 
     private final String email;
     private final String password;
-    private final ArrayList<Product> favorites;
-    private final ArrayList<Product> shoppingCart;
+    private final Set<Product> favorites;
+    private final Set<Product> shoppingCart;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.favorites = new ArrayList<>();
-        this.shoppingCart = new ArrayList<>();
+        this.favorites = new HashSet<>();
+        this.shoppingCart = new HashSet<>();
     }
 
     public String getEmail() {
@@ -49,12 +51,12 @@ public class User {
         return shoppingCart.contains(product);
     }
 
-    public ArrayList<Product> getFavorites() {
-        return favorites;
+    public List<Product> getFavorites() {
+        return new ArrayList<>(favorites);
     }
 
-    public ArrayList<Product> getShoppingCart() {
-        return shoppingCart;
+    public List<Product> getShoppingCart() {
+        return new ArrayList<>(shoppingCart);
     }
 
     @Override
