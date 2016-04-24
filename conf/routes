@@ -1,6 +1,8 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
+GET     /api/products                    controllers.ApiProductsController.list
+GET     /api/products/:id                controllers.ApiProductsController.show(id: Long)
 
 GET     /products                    controllers.ProductsController.list
 GET     /products/:id                controllers.ProductsController.show(id: Long)
