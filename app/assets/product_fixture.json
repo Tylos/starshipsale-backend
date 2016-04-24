@@ -39,6 +39,7 @@
 	"films": [
 		"http://swapi.co/api/films/1/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-10T16:36:50.509000Z",
 	"edited": "2014-12-22T17:35:44.452589Z",
 	"url": "http://swapi.co/api/starships/9/"
@@ -69,6 +70,7 @@
 		"http://swapi.co/api/films/2/",
 		"http://swapi.co/api/films/1/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-10T16:59:45.094000Z",
 	"edited": "2014-12-22T17:35:44.464156Z",
 	"url": "http://swapi.co/api/starships/10/"
@@ -122,6 +124,7 @@
 		"http://swapi.co/api/films/2/",
 		"http://swapi.co/api/films/1/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-12T11:19:05.340000Z",
 	"edited": "2014-12-22T17:35:44.491233Z",
 	"url": "http://swapi.co/api/starships/12/"
@@ -146,6 +149,7 @@
 	"films": [
 		"http://swapi.co/api/films/1/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-12T11:21:32.991000Z",
 	"edited": "2014-12-22T17:35:44.549047Z",
 	"url": "http://swapi.co/api/starships/13/"
@@ -475,6 +479,7 @@
 		"http://swapi.co/api/people/10/",
 		"http://swapi.co/api/people/58/"
 	],
+	"isFeatured" : true,
 	"films": [
 		"http://swapi.co/api/films/5/",
 		"http://swapi.co/api/films/6/"
@@ -667,6 +672,7 @@
 	"films": [
 		"http://swapi.co/api/films/5/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-20T18:08:42.926000Z",
 	"edited": "2014-12-22T17:35:45.171653Z",
 	"url": "http://swapi.co/api/starships/52/"
@@ -897,6 +903,7 @@
 		"http://swapi.co/api/films/5/",
 		"http://swapi.co/api/films/1/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-10T15:36:25.724000Z",
 	"edited": "2014-12-22T18:21:15.523587Z",
 	"url": "http://swapi.co/api/vehicles/4/"
@@ -1047,6 +1054,7 @@
 		"http://swapi.co/api/films/3/",
 		"http://swapi.co/api/films/2/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-15T12:46:42.384000Z",
 	"edited": "2014-12-22T18:21:15.761584Z",
 	"url": "http://swapi.co/api/vehicles/19/"
@@ -1150,6 +1158,7 @@
 	"films": [
 		"http://swapi.co/api/films/3/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-18T11:20:04.625000Z",
 	"edited": "2014-12-22T18:21:15.920537Z",
 	"url": "http://swapi.co/api/vehicles/30/"
@@ -1465,6 +1474,7 @@
 	"films": [
 		"http://swapi.co/api/films/6/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-20T20:05:19.992000Z",
 	"edited": "2014-12-22T18:21:16.478901Z",
 	"url": "http://swapi.co/api/vehicles/67/"
@@ -1606,6 +1616,7 @@
 		"http://swapi.co/api/films/5/",
 		"http://swapi.co/api/films/6/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-20T18:10:07.560000Z",
 	"edited": "2014-12-22T18:21:16.293771Z",
 	"url": "http://swapi.co/api/vehicles/53/"
@@ -1675,7 +1686,7 @@
 }, {
 	"name": "Geonosian starfighter",
 	"model": "Nantex-class territorial defense",
-	"image": "http://starwars.wikia.com/wiki/File:Nantex-class_fighters.png",
+	"image": "http://vignette3.wikia.nocookie.net/starwars/images/8/82/Nantex-class_fighters.png",
 	"manufacturer": "Huppla Pasa Tisc Shipwrights Collective",
 	"cost_in_credits": "unknown",
 	"length": "9.8",
@@ -1689,6 +1700,7 @@
 	"films": [
 		"http://swapi.co/api/films/5/"
 	],
+	"isFeatured" : true,
 	"created": "2014-12-20T18:34:12.541000Z",
 	"edited": "2014-12-22T18:21:16.390980Z",
 	"url": "http://swapi.co/api/vehicles/57/"
