@@ -1,5 +1,7 @@
 package controllers;
 
+import javax.inject.Inject;
+
 import domain.Product;
 import domain.User;
 import play.Logger;
@@ -10,8 +12,6 @@ import play.mvc.Security;
 import repositories.ProductsRepository;
 import repositories.UserRepository;
 
-import javax.inject.Inject;
-
 public class ProductsController extends Controller {
 
     @Inject
@@ -21,13 +21,13 @@ public class ProductsController extends Controller {
     UserRepository userRepository;
 
     public Result list() {
-        return ok(Json.toJson(productsRepository.getAll()));
+        return ok(views.html.index.render(productsRepository.getAll()));
     }
 
     public Result show(Long id) {
         Product product = productsRepository.getById(id);
         if (product != null) {
-            return ok(Json.toJson(product));
+            return ok(views.html.item.render(product));
         } else {
             return notFound();
         }
