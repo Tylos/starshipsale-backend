@@ -1,5 +1,4 @@
-package controllers;
-
+package controllers.authentication;
 
 import com.google.inject.Inject;
 import domain.Session;
@@ -10,9 +9,9 @@ import repositories.SessionRepository;
 
 import javax.annotation.Nullable;
 
-public class ActionAuthenticator extends Security.Authenticator {
+public class OptionalAuthenticator  extends Security.Authenticator {
 
-    public static final String AUTHENTICATED_USER_KEY = "authenticated_user";
+    public static final String ANONYMOUS_USER = "anonymous_user";
 
     @Inject
     SessionRepository sessionRepository;
@@ -29,10 +28,11 @@ public class ActionAuthenticator extends Security.Authenticator {
             }
         }
 
-        return null;
+        return ANONYMOUS_USER;
     }
 
-    private @Nullable String getTokenFromHeader(Http.Context ctx) {
+    public static @Nullable
+    String getTokenFromHeader(Http.Context ctx) {
         String[] authTokenHeaderValues = ctx.request().headers().get("X-AUTH-TOKEN");
         if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
             return authTokenHeaderValues[0];

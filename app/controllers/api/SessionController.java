@@ -1,4 +1,4 @@
-package controllers;
+package controllers.api;
 
 import domain.Session;
 import domain.User;
@@ -11,7 +11,7 @@ import repositories.UserRepository;
 import javax.inject.Inject;
 import java.util.UUID;
 
-public class UsersController extends Controller{
+public class SessionController extends Controller{
 
     @Inject
     UserRepository userRepository;
@@ -25,15 +25,14 @@ public class UsersController extends Controller{
                 request().body().asJson().get("password").asText()
         );
 
-        play.Logger.debug(request().body().toString());
         User storedUser = userRepository.getByIdentifier(user.getEmail());
 
         if(storedUser == null) {
             UUID authToken = processNewUser(user);
-            return created(Json.toJson(authToken.toString()));
+            return created(Json.toJson(new Session(authToken.toString(), user)));
         } else if (storedUser.getPassword().equals(user.getPassword())) {
             UUID authToken = processExistingUser(storedUser);
-            return ok(Json.toJson(authToken.toString()));
+            return ok(Json.toJson(new Session(authToken.toString(), storedUser)));
         } else {
             return unauthorized();
         }
