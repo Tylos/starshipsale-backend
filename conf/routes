@@ -4,6 +4,7 @@
 GET     /api/products                    controllers.ApiProductsController.list
 GET     /api/products/:id                controllers.ApiProductsController.show(id: Long)
 
+GET     /products                    controllers.ProductsController.list
 GET     /products/:id                controllers.ProductsController.show(id: Long)
 POST    /products/:id/favorite       controllers.ProductsController.favoriteProduct(id: Long)
 DELETE  /products/:id/favorite       controllers.ProductsController.unfavoriteProduct(id: Long)
@@ -13,4 +14,5 @@ GET     /                            controllers.ProductsController.list
 POST    /users/login                 controllers.UsersController.login
 
 # Map static resources from the /public folder to the /assets URL path
+GET     /*file        controllers.Assets.at(path="/public", file)
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
