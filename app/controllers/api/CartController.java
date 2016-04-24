@@ -1,6 +1,7 @@
 package controllers.api;
 
 import controllers.authentication.RequiredAuthenticator;
+import controllers.mapper.ProductToViewMapper;
 import domain.Product;
 import domain.User;
 import play.Logger;
@@ -12,6 +13,7 @@ import repositories.ProductsRepository;
 import repositories.UserRepository;
 
 import javax.inject.Inject;
+
 
 @Security.Authenticated(RequiredAuthenticator.class)
 public class CartController extends Controller {
@@ -25,7 +27,10 @@ public class CartController extends Controller {
     public Result list() {
         User user = userRepository.getByIdentifier(ctx().request().username());
         if (user != null) {
-            return ok(Json.toJson(user.getShoppingCart()));
+            return ok(Json.toJson(
+                    ProductToViewMapper.map(
+                            user.getShoppingCart(),
+                            user)));
         } else {
             return notFound();
         }
@@ -37,9 +42,12 @@ public class CartController extends Controller {
 
         if (user != null && product != null) {
             user.addToCart(product);
-            return ok(Json.toJson(product));
+            return ok(Json.toJson(
+                    ProductToViewMapper.map(
+                            product,
+                            user)));
         } else {
-            Logger.debug("Product = " + product + "User " + user);
+
             return notFound();
         }
     }
@@ -47,7 +55,15 @@ public class CartController extends Controller {
     public Result removeFromCart(Long id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
-        user.removeFromCart(product);
-        return ok(Json.toJson(product));
+
+        if(user != null && product != null) {
+            user.removeFromCart(product);
+            return ok(Json.toJson(
+                    ProductToViewMapper.map(
+                            product,
+                            user)));
+        }
+
+        return notFound();
     }
 }
