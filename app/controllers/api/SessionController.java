@@ -11,7 +11,7 @@ import repositories.UserRepository;
 import javax.inject.Inject;
 import java.util.UUID;
 
-public class UsersController extends Controller{
+public class SessionController extends Controller{
 
     @Inject
     UserRepository userRepository;

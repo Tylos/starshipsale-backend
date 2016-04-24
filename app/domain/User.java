@@ -37,7 +37,23 @@ public class User {
         return favorites.contains(product);
     }
 
+    public void addToCart(Product product) {
+        shoppingCart.add(product);
+    }
+
+    public void removeFromCart(Product product) {
+        shoppingCart.remove(product);
+    }
+
     public Boolean isInCart(Product product) {
         return shoppingCart.contains(product);
+    }
+
+    public ArrayList<Product> getFavorites() {
+        return favorites;
+    }
+
+    public ArrayList<Product> getShoppingCart() {
+        return shoppingCart;
     }
 }

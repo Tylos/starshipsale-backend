@@ -18,6 +18,7 @@ import views.ProductView;
 import java.util.ArrayList;
 import java.util.List;
 
+@Security.Authenticated(OptionalAuthenticator.class)
 public class ProductsController extends Controller {
 
     @Inject
@@ -26,7 +27,6 @@ public class ProductsController extends Controller {
     @Inject
     UserRepository userRepository;
 
-    @Security.Authenticated(OptionalAuthenticator.class)
     public Result list() {
         return ok(Json.toJson(
                 mapProducts(
@@ -34,7 +34,6 @@ public class ProductsController extends Controller {
                         getUserContextWithAnonymousFallback())));
     }
 
-    @Security.Authenticated(OptionalAuthenticator.class)
     public Result show(Long id) {
         Product product = productsRepository.getById(id);
         if (product != null) {
@@ -45,28 +44,6 @@ public class ProductsController extends Controller {
         } else {
             return notFound();
         }
-    }
-
-    @Security.Authenticated(RequiredAuthenticator.class)
-    public Result favoriteProduct(Long id) {
-        User user = userRepository.getByIdentifier(ctx().request().username());
-        Product product = productsRepository.getById(id);
-
-        if (user != null && product != null) {
-            user.favorite(product);
-            return ok(Json.toJson(product));
-        } else {
-            Logger.debug("Product = " + product + "User " + user);
-            return notFound();
-        }
-    }
-
-    @Security.Authenticated(RequiredAuthenticator.class)
-    public Result unfavoriteProduct(Long id) {
-        User user = userRepository.getByIdentifier(ctx().request().username());
-        Product product = productsRepository.getById(id);
-        user.unfavorite(product);
-        return ok(Json.toJson(product));
     }
 
     private List<ProductView> mapProducts(List<Product> all, User userContext) {
