@@ -15,7 +15,7 @@ public class Product {
     public String crew;
     public String cargo_capacity;
     public String hyperdrive_rating;
-    public Boolean isFeatured;
+    public Boolean is_featured;
 
     @Override
     public boolean equals(Object o) {

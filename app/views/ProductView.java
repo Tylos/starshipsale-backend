@@ -140,7 +140,9 @@ public class ProductView {
         }
 
         public Builder withIsFeatured(Boolean val) {
-            is_featured = val;
+            if(val != null) {
+                is_featured = val;
+            }
             return this;
         }
 

@@ -31,7 +31,7 @@ public class ProductToViewMapper {
                 .withCrew(product.crew)
                 .withCargoCapacity(product.cargo_capacity)
                 .withHyperdriveRating(product.hyperdrive_rating)
-                .withIsFeatured(product.isFeatured)
+                .withIsFeatured(product.is_featured)
                 .withIsFavorite(userContext.isFavorite(product))
                 .withIsInCart(userContext.isInCart(product))
                 .build();
