@@ -1,11 +1,11 @@
 package controllers.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import domain.Product;
 import domain.User;
 import views.ProductView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductToViewMapper {
 
@@ -20,8 +20,8 @@ public class ProductToViewMapper {
 
     public static ProductView map(Product product, User userContext) {
         return ProductView.newBuilder()
-                .withId(product.id)
                 .withName(product.name)
+                .withId(product.getId())
                 .withModel(product.model)
                 .withManufacturer(product.manufacturer)
                 .withStarshipClass(product.starship_class)

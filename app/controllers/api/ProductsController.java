@@ -29,7 +29,7 @@ public class ProductsController extends Controller {
                         getUserContextWithAnonymousFallback())));
     }
 
-    public Result show(Long id) {
+    public Result show(String id) {
         Product product = productsRepository.getById(id);
         if (product != null) {
             return ok(Json.toJson(

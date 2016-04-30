@@ -2,7 +2,7 @@ package views;
 
 public class ProductView {
 
-    public final Long id;
+    public final String id;
     public final String name;
     public final String model;
     public final String manufacturer;
@@ -59,7 +59,7 @@ public class ProductView {
 
 
     public static final class Builder {
-        private Long id;
+        private String id;
         private String name;
         private String model;
         private String manufacturer;
@@ -84,7 +84,7 @@ public class ProductView {
             return this;
         }
 
-        public Builder withId(Long val) {
+        public Builder withId(String val) {
             id = val;
             return this;
         }

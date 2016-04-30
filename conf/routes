@@ -2,18 +2,18 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 GET           /api/products             controllers.api.ProductsController.list
-GET           /api/products/:id         controllers.api.ProductsController.show(id: Long)
+GET           /api/products/:id         controllers.api.ProductsController.show(id: String)
 GET           /api/favorites            controllers.api.FavoritesController.list
-POST          /api/favorites/:id        controllers.api.FavoritesController.favoriteProduct(id: Long)
-DELETE        /api/favorites/:id        controllers.api.FavoritesController.unfavoriteProduct(id: Long)
+POST          /api/favorites/:id        controllers.api.FavoritesController.favoriteProduct(id: String)
+DELETE        /api/favorites/:id        controllers.api.FavoritesController.unfavoriteProduct(id: String)
 GET           /api/cart                 controllers.api.CartController.list
-POST          /api/cart/:id             controllers.api.CartController.addToCart(id: Long)
-DELETE        /api/cart/:id             controllers.api.CartController.removeFromCart(id: Long)
+POST          /api/cart/:id             controllers.api.CartController.addToCart(id: String)
+DELETE        /api/cart/:id             controllers.api.CartController.removeFromCart(id: String)
 
-POST          /api/session/login          controllers.api.SessionController.login
+POST          /api/session/login        controllers.api.SessionController.login
 
 GET           /products                 controllers.web.ProductsController.list
-GET           /products/:id             controllers.web.ProductsController.show(id: Long)
+GET           /p/:id                    controllers.web.ProductsController.show(id: String)
 GET           /                         controllers.web.ProductsController.list
 
 # Map static resources from the /public folder to the /assets URL path
