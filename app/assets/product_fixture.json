@@ -1168,7 +1168,7 @@
     "url": "http://swapi.co/api/vehicles/25/"
   },
   {
-    "name": "TIE/IN interceptor",
+    "name": "TIE-IN interceptor",
     "model": "Twin Ion Engine Interceptor",
     "image": "http://vignette3.wikia.nocookie.net/starwars/images/6/65/Tieinter2.jpg",
     "manufacturer": "Sienar Fleet Systems",
@@ -1436,7 +1436,7 @@
     "url": "http://swapi.co/api/vehicles/46/"
   },
   {
-    "name": "LAAT/i",
+    "name": "LAAT-i",
     "model": "Low Altitude Assault Transport/infrantry",
     "image": "http://vignette1.wikia.nocookie.net/starwars/images/c/c5/Low_Altitude_Assault_Transport.png",
     "manufacturer": "Rothana Heavy Engineering",
@@ -1458,7 +1458,7 @@
     "url": "http://swapi.co/api/vehicles/50/"
   },
   {
-    "name": "LAAT/c",
+    "name": "LAAT-c",
     "model": "Low Altitude Assault Transport/carrier",
     "image": "http://vignette2.wikia.nocookie.net/starwars/images/e/e6/Laatc.jpg",
     "manufacturer": "Rothana Heavy Engineering",
