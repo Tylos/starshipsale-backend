@@ -1,18 +1,17 @@
 package controllers.api;
 
+import javax.inject.Inject;
+
 import controllers.authentication.RequiredAuthenticator;
 import controllers.mapper.ProductToViewMapper;
 import domain.Product;
 import domain.User;
-import play.Logger;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import repositories.ProductsRepository;
 import repositories.UserRepository;
-
-import javax.inject.Inject;
 
 
 @Security.Authenticated(RequiredAuthenticator.class)
@@ -36,7 +35,7 @@ public class CartController extends Controller {
         }
     }
 
-    public Result addToCart(Long id) {
+    public Result addToCart(String id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
 
@@ -52,7 +51,7 @@ public class CartController extends Controller {
         }
     }
 
-    public Result removeFromCart(Long id) {
+    public Result removeFromCart(String id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
 

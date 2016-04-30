@@ -22,7 +22,7 @@ public class ProductsController extends Controller {
         return ok(views.html.index.render(productsRepository.getAll()));
     }
 
-    public Result show(Long id) {
+    public Result show(String id) {
         Product product = productsRepository.getById(id);
         if (product != null) {
             return ok(views.html.item.render(product));

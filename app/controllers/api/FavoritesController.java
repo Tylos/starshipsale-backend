@@ -1,18 +1,17 @@
 package controllers.api;
 
+import javax.inject.Inject;
+
 import controllers.authentication.RequiredAuthenticator;
 import controllers.mapper.ProductToViewMapper;
 import domain.Product;
 import domain.User;
-import play.Logger;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import repositories.ProductsRepository;
 import repositories.UserRepository;
-
-import javax.inject.Inject;
 
 @Security.Authenticated(RequiredAuthenticator.class)
 public class FavoritesController extends Controller {
@@ -35,7 +34,7 @@ public class FavoritesController extends Controller {
         }
     }
 
-    public Result favoriteProduct(Long id) {
+    public Result favoriteProduct(String id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
 
@@ -50,7 +49,7 @@ public class FavoritesController extends Controller {
         }
     }
 
-    public Result unfavoriteProduct(Long id) {
+    public Result unfavoriteProduct(String id) {
         User user = userRepository.getByIdentifier(ctx().request().username());
         Product product = productsRepository.getById(id);
         if (user != null && product != null) {

@@ -2,9 +2,7 @@ package repositories;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.Product;
 
-import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,17 +10,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Singleton;
+
+import domain.Product;
+
 @Singleton
 public class MemoryProductsRepository implements ProductsRepository {
 
-    private Map<Long, Product> products;
+    private Map<String, Product> products;
 
     public MemoryProductsRepository() {
         this.products = new HashMap<>();
         fillProductList(products);
     }
 
-    private void fillProductList(Map<Long, Product> products) {
+    private void fillProductList(Map<String, Product> products) {
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -31,17 +33,13 @@ public class MemoryProductsRepository implements ProductsRepository {
                     new TypeReference<List<Product>>() {
             });
 
-            for (int i = 0; i < fixtures.size(); i++) {
-                Product value = fixtures.get(i);
-                long id = (long) (i + 1);
-                value.id = id;
-                products.put(id, value);
-            }
+            fixtures.stream().forEach(fixture ->
+                    products.put(fixture.getProductNameAsId(), fixture));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        //new ObjectMapper().readValue(parse, new TypeReference<List<Product>>(){});
     }
 
     @Override
@@ -50,7 +48,7 @@ public class MemoryProductsRepository implements ProductsRepository {
     }
 
     @Override
-    public Product getById(Long id) {
+    public Product getById(String id) {
         return this.products.get(id);
     }
 }

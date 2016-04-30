@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
-    public Long id;
+
+    public String id;
     public String name;
     public String model;
     public String manufacturer;
@@ -19,17 +20,30 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Product product = (Product) o;
 
-        return id.equals(product.id);
+        return getId().equals(product.getId());
 
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return getId().hashCode();
     }
+
+    public String getProductNameAsId() {
+        return name.toLowerCase().replaceAll(" ","-");
+    }
+
+    public String getId(){
+        return getProductNameAsId();
+    }
+
 }
