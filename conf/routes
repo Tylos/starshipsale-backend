@@ -9,6 +9,7 @@ DELETE        /api/favorites/:id        controllers.api.FavoritesController.unfa
 GET           /api/cart                 controllers.api.CartController.list
 POST          /api/cart/:id             controllers.api.CartController.addToCart(id: String)
 DELETE        /api/cart/:id             controllers.api.CartController.removeFromCart(id: String)
+POST          /api/purchase             controllers.api.PurchaseController.purchase()
 
 POST          /api/session/login        controllers.api.SessionController.login
 
